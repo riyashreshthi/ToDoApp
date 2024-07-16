@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-lg mt-5" style="height: 600px;
+            overflow-y: scroll;">
+                <div class="card-header text-center py-4 border-0">
+                    <h1 class="display-6 fw-bold">To Do List</h1>
+                </div>
+                <div class="card-ody p-4">
+                    <ul class="list-group">
+                        <li class="list-group-item mb-2 border py-0 rounded-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-0 py-3 shadow-none" placeholder="Title goes here" id="title" name="title" [(ngModel)]="title"/>
+                                <button class="btn text-success border-0" (click)="onAddClick()">
+                                    <i class="fa-solid fa-circle-plus fa-xl"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let todo of todos; let i = index">
+                            <span>
+                                <i class="text-success" (click)="onStatusChange(i)"
+                                [ngClass]="todo.completed?'fa-solid fa-circle-check':'fa-regular fa-circle'"></i>
+                                {{todo.newTitle}}
+                                <span class="float-end text-secondary" (click)="onDelete(i)">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col md-6">
+            <div class="card shadow-lg mt-5" style="height: 600px;
+            overflow-y: scroll;">
+                <div class="card-header text-center py-4 border-0">
+                    <h1 class="display-6 fw-bold">Done Items</h1>
+                </div>
+                <div class="card-ody p-4">
+                    <ul class="list-group">
+                        <li class="list-group-item mb-2 border py-0 rounded-3" *ngFor="let doneItem of completedTask">
+                            <span *ngIf="doneItem.completed">
+                                {{doneItem.newTitle}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
